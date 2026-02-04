@@ -10,10 +10,6 @@ function UseSetInterval() {
     },5000);
 }
 
-
-
-
-
 function useSetImmediate(){
     setImmediate(() =>{
         console.log('8:this is message after setImmediate.');
