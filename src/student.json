@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Amit Sharma",
+    "classes": "BTech"
+  },
+  {
+    "id": 2,
+    "name": "aman",
+    "classes": "btech"
+  },
+  {
+    "id": 3,
+    "name": "Rohit Singh",
+    "classes": "BSc"
+  },
+  {
+    "id": 5,
+    "name": "Ankit Patel",
+    "classes": "BCom"
+  },
+  {
+    "id": 6,
+    "name": "Sneha Iyer",
+    "classes": "BTech"
+  },
+  {
+    "id": 7,
+    "name": "Rahul Mehta",
+    "classes": "BCA"
+  }
+]
+
+
