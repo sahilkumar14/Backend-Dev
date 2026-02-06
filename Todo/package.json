@@ -1,0 +1,13 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev":"node index.js"
+  },
+  "keywords": [],
+  "author": "sahil kumar",
+  "license": "ISC",
+  "type": "module"
+}
