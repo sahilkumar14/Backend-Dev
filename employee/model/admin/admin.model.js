@@ -1,5 +1,6 @@
 import fs from "fs"
 
+
 export function adminCreate(name, email, password,basic_salary){
     try{
         let adminOb = {

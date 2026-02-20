@@ -1,5 +1,6 @@
 import fs from "fs"
 
+
 export function employeeCreate(name, email, password,department,basic_salary){
     try{
         let employeeOb = {
