@@ -1,6 +1,7 @@
 import joi from "joi"
 import { StatusCodes } from "http-status-pro-js"
 
+
 export default function employeeUpdateMidd(req,res,next){
     try {
         const isHtmlForm = req.is("application/x-www-form-urlencoded")
