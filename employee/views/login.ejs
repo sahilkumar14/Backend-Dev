@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= role === "admin" ? "Admin Login" : "Employee Login" %></title>
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        <div class="nav">
+            <p>Employee Payroll</p>
+        </div>
+
+        <div class="container">
+            <div class="card form-card">
+                <h1><%= role === "admin" ? "Admin Login" : "Employee Login" %></h1>
+                <form class="employee-form" action="<%= role === 'admin' ? '/admin/login' : '/employee/login' %>" method="post">
+                    <div class="grid">
+                        <div>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required />
+                        </div>
+                        <div>
+                            <label for="password">Password</label>
+                            <input type="text" id="password" name="password" minlength="4" maxlength="6" required />
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <div class="left">
+                            <a href="<%= role === 'admin' ? '/employee/login' : '/admin/login' %>" class="btn-secondary btn-cancel">
+                                Switch to <%= role === "admin" ? "Employee" : "Admin" %>
+                            </a>
+                        </div>
+                        <div class="right">
+                            <a href="<%= role === 'admin' ? '/admin/signup' : '/employee/signup' %>" class="btn-secondary">Create Account</a>
+                            <button type="submit" class="btn-primary btn-success">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
