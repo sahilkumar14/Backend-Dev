@@ -1,8 +1,6 @@
 import express from "express"
 import dotenv from "dotenv"
 import mongoose from "mongoose"
-import userSchema from "./schema/user.schema.js"
-import TodoSchema from "./schema/todo.schema.js"
 import usersignup from "./service/user.signupservice.js"
 import userSignupMidware from "./middleware/user.signupmidware.js"
 dotenv.config()
