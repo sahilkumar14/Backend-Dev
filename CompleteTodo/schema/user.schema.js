@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export default function userSchema(){
+export default function userSchema(name,email,password){
     try {
         let userSchema = new mongoose.Schema({
             name:{
@@ -35,6 +35,20 @@ export default function userSchema(){
         })
         
         let user = mongoose.model("user",userSchema)
+        let newuser = new user({
+            name:name,
+            email:email,
+            password:password
+        })
+
+        newuser.save()
+        if(!newuser){
+            return false;
+        }
+
+        return true;
+
+        
     } catch (error) {
         console.log(error)
     }
