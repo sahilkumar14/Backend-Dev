@@ -1,14 +1,11 @@
-import userSchema from "../schema/user.schema.js"
-import bcrypt from "bcrypt"
+import createUser from "../controller/user.signupController.js"
 import {StatusCodes} from "http-status-pro-js"
 
 
 export default function usersignup(req,res){
     try {
         let{name,email,password} = req.body
-        let salt = bcrypt.genSaltSync(10)
-        let hashpassword = bcrypt.hashSync(password,salt)
-        let user = userSchema(name,email,hashpassword)
+        let user = createUser(name,email,password)
         if(!user){
             return res.status(StatusCodes.INTERNAL_SERVER_ERROR.code).json({
                 code:StatusCodes.INTERNAL_SERVER_ERROR.code,
