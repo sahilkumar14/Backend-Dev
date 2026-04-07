@@ -1,56 +1,27 @@
 import mongoose from "mongoose";
 
-export default function userSchema(name,email,password){
-    try {
-        let userSchema = new mongoose.Schema({
-            name:{
-                type:String,
-                trim:true,
-                max: 100,
-                min: 3,
-                required:true
-            },
-            email:{
-                type:String,
-                trim:true,
-                unique:[true, 'email already exists'],
-                validate:{
-                    validator: function(value){
-                        return /@gmail\.com$/.test(value)
-                    }
-                },
-                required:true
-            },
-            password:{
-                type:String,
-                trim:true,
-                min:[4 ,'minimun length should be 4'],
-                max:[8, 'maximum length should be 8'],
-                validate:{
-                    validator: function(value){
-                        return /[a-zA-Z0-9]/.test(value)
-                    }
-                }
-            }
-        })
-        
-        let user = mongoose.model("user",userSchema)
-        let newuser = new user({
-            name:name,
-            email:email,
-            password:password
-        })
 
-        newuser.save()
-        if(!newuser){
-            return false;
-        }
 
-        return true;
-
-        
-    } catch (error) {
-        console.log(error)
+let userSchema = new mongoose.Schema({
+    name:{
+       type:String,
+       minlength:3,
+       maxlength:100,
+       trim:true,
+       required:true 
+    },
+    email:{
+        type:String,
+        trim:true,
+        match:[/@gmail\.com$/],
+        unique:true,
+        required:true
+    },
+    password:{
+        type:String,
+        required:true
     }
-}
+})
 
+
+export const User = mongoose.model("user",userSchema)
