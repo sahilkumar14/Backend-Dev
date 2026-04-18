@@ -1,0 +1,84 @@
+Exercise 01:
+Create a complete Student management system with:
+1. Add new student
+2. View all students
+3. Find student by email
+4. Update student GPA
+5. Delete student
+
+solution:
+1. add new student->
+
+db.students.insertMany([
+  {
+    name: "Rahul Sharma",
+    email: "rahul@gmail.com",
+    age: 22,
+    course: "BCA",
+    gpa: 7.8
+  },
+  {
+    name: "Priya Singh",
+    email: "priya@gmail.com",
+    age: 20,
+    course: "B.Sc",
+    gpa: 9.1
+  }
+])
+
+2. view all student->
+
+db.students.find()
+
+3.find student by email->
+
+db.students.findOne({ email: "rahul@gmail.com" })
+
+4. update student GPA->
+
+db.students.updateOne(
+  { email: "rahul@gmail.com },
+  { $set: { gpa: 8.0 } }
+)
+
+5. delete student ->
+db.students.deleteOne({ email: "rahul@gmail.com" })
+
+Exercise 02:
+Write queries to:
+1. Find all students with GPA between 3.0 and 3.5
+2. Find students enrolled in more than 5 courses
+3. Get top 10 students by GPA
+4. Count students by city
+
+
+solution:
+1. Find all students with GPA between 3.0 and 3.5 ->
+
+db.student.find({
+    GPA:{
+        $gte:3.0,
+        $lte:3.5
+    }
+})
+
+2. Find students enrolled in more than 5 courses ->
+
+db.students.find({
+  $expr: { $gt: [ { $size: "$courses" }, 5 ] }
+})
+
+3. get top 10 student by GPA ->
+
+db.students.find().sort({ gpa: -1 }).limit(10)
+
+4.count student by city ->
+
+db.students.aggregate([
+  {
+    $group: {
+      _id: "$city",
+      totalStudents: { $sum: 1 }
+    }
+  }
+])
