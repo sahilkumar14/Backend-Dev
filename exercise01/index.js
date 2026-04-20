@@ -4,16 +4,15 @@ import fs from "fs";
 const app = express();
 const PORT = 3000;
 
-// GET /books?author=...&year=...
+
 app.get("/books", (req, res) => {
   try {
     const { author, year } = req.query;
 
-    // Read file
+
     const data = fs.readFileSync("./books.json", "utf-8");
     let books = JSON.parse(data);
 
-    // Apply filters
     if (author) {
       books = books.filter(book =>
         book.author.toLowerCase().includes(author.toLowerCase())
