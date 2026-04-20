@@ -6,7 +6,7 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 
-// Session setup
+
 app.use(
   session({
     secret: process.env.SECRECT_KEY,
@@ -15,7 +15,7 @@ app.use(
   })
 );
 
-/* ---------------- STEP 1 ---------------- */
+
 app.get("/step1", (req, res) => {
   res.send(`
     <h2>Step 1: Enter Name</h2>
@@ -31,7 +31,7 @@ app.post("/step1", (req, res) => {
   res.redirect("/step2");
 });
 
-/* ---------------- STEP 2 ---------------- */
+
 app.get("/step2", (req, res) => {
   if (!req.session.user) return res.redirect("/step1");
 
@@ -49,7 +49,7 @@ app.post("/step2", (req, res) => {
   res.redirect("/step3");
 });
 
-/* ---------------- STEP 3 ---------------- */
+
 app.get("/step3", (req, res) => {
   if (!req.session.user) return res.redirect("/step1");
 
