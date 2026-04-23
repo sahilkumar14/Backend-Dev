@@ -146,6 +146,7 @@ app.delete("/authors/:id", (req, res) => {
     const deleted = authors.splice(index, 1);
     saveAuthors(authors);
 
+    
     res.json({
       message: "Author deleted",
       author: deleted[0]
